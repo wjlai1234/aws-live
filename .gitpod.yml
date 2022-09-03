@@ -1,6 +1,8 @@
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - init: cd aws-live-main/ # runs during prebuild
+  - name: cd dir + lib install
+    before: cd aws-live-main/
+    init:  pip install flask pymysql boto3 # runs during prebuild
     command: python EmpApp.py
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
 ports:
