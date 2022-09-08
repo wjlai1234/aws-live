@@ -1,0 +1,141 @@
+{% extends 'base.html' %} {%block breadcrumb%}
+<nav class="breadcrumb sl-breadcrumb">
+  <a class="breadcrumb-item" href="index.html">Starlight</a>
+  <a class="breadcrumb-item" href="index.html">Tables</a>
+  <span class="breadcrumb-item active">Data Table</span>
+</nav>
+{%endblock%} {% block main %}
+
+<div class="sl-pagebody">
+  <!-- <div class="sl-page-title">
+        <h5>Data Table</h5>
+        <p>DataTables is a plug-in for the jQuery Javascript library.</p>
+      </div>sl-page-title -->
+
+  <div class="card pd-20 pd-sm-40">
+    <div class="flex">
+	<form action="/addemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
+       <!-- BASIC MODAL -->
+    <div id="modaldemo1" class="modal fade">
+      <div class="modal-dialog modal-dialog-vertical-center" role="document">
+        <div class="modal-content bd-0 tx-14">
+          <div class="modal-header pd-y-20 pd-x-25">
+            <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Adding Data</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body pd-60">
+            <div class="row">
+              <label class="col-sm-4 form-control-label">Emp Id: <span class="tx-danger">*</span></label>
+              <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                <input type="number" class="form-control" name="emp_id" placeholder="Enter firstname">
+              </div>
+            </div><!-- row -->
+                <div class="row mg-t-20">
+                  <label class="col-sm-4 form-control-label">Firstname: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                    <input type="text" class="form-control" name="first_name" placeholder="Enter firstname">
+                  </div>
+                </div><!-- row -->
+                <div class="row mg-t-20">
+                  <label class="col-sm-4 form-control-label">Lastname: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                    <input type="text" class="form-control" name="last_name" placeholder="Enter lastname">
+                  </div>
+                </div>
+                <div class="row mg-t-20">
+                  <label class="col-sm-4 form-control-label">Position: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                    <input type="text" class="form-control"name="position" placeholder="Enter position">
+                  </div>
+                </div>
+                <div class="row mg-t-20">
+                  <label class="col-sm-4 form-control-label">Start Date: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                    <input type="date" class="form-control"name="start_date" placeholder="Enter date">
+                  </div>
+                </div>
+                <div class="row mg-t-20">
+                  <label class="col-sm-4 form-control-label">Salary: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                    <input type="number" class="form-control" name="salary" placeholder="Enter salary">
+                  </div>
+                </div>
+                <div class="row mg-t-20">
+                  <label class="col-sm-4 form-control-label">Email: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                    <input type="text" class="form-control" name="email" placeholder="Enter email address">
+                  </div>
+                </div>
+               
+                <div class="row mg-t-20">
+                  <label class="col-sm-4 form-control-label">Address: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                    <textarea rows="2" class="form-control" name="location" placeholder="Enter address"></textarea>
+                  </div>
+                </div>
+
+                <div class="row mg-t-20">
+                  <label class="col-sm-4 form-control-label">Upload File: <span class="tx-danger">*</span></label>
+                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                    <input type="file" class="form-control" name="emp_image_file"    placeholder="">
+                  </div>
+                </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-info pd-x-20">Save changes</button>
+            <button type="button" class="btn btn-secondary pd-x-20" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div><!-- modal-dialog -->
+    </div><!-- modal -->
+  </form>
+
+      <a href="" class="btn btn-info pd-x-20" data-toggle="modal" data-target="#modaldemo1"style="float: right;">Add Data</a>
+
+      <h6 class="card-body-title">Employee Console</h6>
+        <p class="mg-b-20 mg-sm-b-30">
+          Searching, ordering and paging goodness will be immediately added to the
+          table, as shown in this example.
+        </p>      
+    <div class="table-wrapper">
+      <table id="datatable1" class="table display responsive nowrap">
+          <!-- {%for i in range(0, len)%} 
+          <li>{{user[i] }}</li>  
+          {%endfor%} -->
+
+        <thead>
+          <tr>
+            <th class="wd-15p">First name</th>
+            <th class="wd-15p">Last name</th>
+            <th class="wd-20p">Position</th>
+            <th class="wd-15p">Start date</th>
+            <th class="wd-10p">Salary</th>
+            <th class="wd-25p">E-mail</th>
+            <th class="wd-25p">Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for i in range(0, len)%} 
+          <tr>
+            <td>{{user[i][0]}}</td>
+            <td>{{user[i][1]}}</td>
+            <td>{{user[i][2]}}</td>
+            <td>{{user[i][3]}}</td>
+            <td>{{user[i][4]}}</td>
+            <td>{{user[i][5]}}</td>
+            <td>{{user[i][6]}}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+
+      </table>
+    </div>
+    <!-- table-wrapper -->
+  </div>
+  <!-- card -->
+</div>
+<!-- sl-pagebody -->
+{% endblock %}

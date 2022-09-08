@@ -23,10 +23,17 @@ table = 'employee'
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('AddEmp.html')
+    title = 'Employee System Management'
+    return render_template('base.html', title=title)
 
+@app.route("/employee", methods=['GET', 'POST'])
+def employee():
+    cur = db_conn.cursor() 
+    cur.execute("""SELECT * FROM employee""")
+    user = cur.fetchall()
+    return render_template('Employee.html',len = len(user), user = user)
 
-@app.route("/about", methods=['POST'])
+@app.route("/about", methods=['GET'])
 def about():
     return render_template('www.intellipaat.com')
 
@@ -36,11 +43,14 @@ def AddEmp():
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
     last_name = request.form['last_name']
-    pri_skill = request.form['pri_skill']
+    position = request.form['position']
+    start_date = request.form['start_date']
+    salary = request.form['salary']
+    email = request.form['email']
     location = request.form['location']
     emp_image_file = request.files['emp_image_file']
 
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     if emp_image_file.filename == "":
@@ -48,7 +58,7 @@ def AddEmp():
 
     try:
 
-        cursor.execute(insert_sql, (emp_id, first_name, last_name, pri_skill, location))
+        cursor.execute(insert_sql, (emp_id, first_name, last_name, position, start_date, salary, email, location))
         db_conn.commit()
         emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #

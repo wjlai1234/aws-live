@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.6/dist/css/uikit.min.css" />
+    <!-- vendor css -->
+    <link href="../static/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../static/lib/Ionicons/css/ionicons.css" rel="stylesheet">
+    <link href="../static/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link href="../static/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
+
+    <!-- Starlight CSS -->
+    <link rel="stylesheet" href="../static/css/starlight.css">
+</head>
+<body>
+    
+     <!-- ########## START: LEFT PANEL ########## -->
+     <div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i> starlight</a></div>
+
+     <!-- ########## END: LEFT PANEL ########## -->
+ 
+     <!-- ########## START: HEAD PANEL ########## -->
+     {% include "components/headPanel.html" %}
+     <!-- ########## END: HEAD PANEL ########## -->
+
+     <!-- ########## START: RIGHT PANEL ########## -->
+    {% include "components/sidebar.html" %}
+     <!-- ########## END: RIGHT PANEL ########## --->
+ 
+     <!-- ########## START: MAIN PANEL ########## -->
+     <div class="sl-mainpanel">
+      {%block breadcrumb%}
+      <nav class="breadcrumb sl-breadcrumb">
+        <a class="breadcrumb-item" href="index.html">Starlight</a>
+        <span class="breadcrumb-item active">Dashboard</span>
+      </nav>
+      {%endblock%}
+   
+      {% block main %}
+      {% include "components/mainPanel.html" %}
+     
+      {% endblock %}
+  
+      <footer class="sl-footer">
+        <div class="footer-left">
+          <div class="mg-b-2">Copyright &copy; 2017. Starlight. All Rights Reserved.</div>
+          <div>Made by ThemePixels.</div>
+        </div>
+        <div class="footer-right d-flex align-items-center">
+          <span class="tx-uppercase mg-r-10">Share:</span>
+          <a target="_blank" class="pd-x-5" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//themepixels.me/starlight"><i class="fa fa-facebook tx-20"></i></a>
+          <a target="_blank" class="pd-x-5" href="https://twitter.com/home?status=Starlight,%20your%20best%20choice%20for%20premium%20quality%20admin%20template%20from%20Bootstrap.%20Get%20it%20now%20at%20http%3A//themepixels.me/starlight"><i class="fa fa-twitter tx-20"></i></a>
+        </div>
+      </footer>
+    </div><!-- sl-mainpanel -->
+  
+     <!-- ########## END: MAIN PANEL ########## -->
+
+    <script src="../static/lib/jquery/jquery.js"></script>
+    <script src="../static/lib/popper.js/popper.js"></script>
+    <script src="../static/lib/bootstrap/bootstrap.js"></script>
+    <script src="../static/lib/jquery-ui/jquery-ui.js"></script>
+    <script src="../static/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="../static/lib/jquery.sparkline.bower/jquery.sparkline.min.js"></script>
+    <script src="../static/lib/d3/d3.js"></script>
+    <script src="../static/lib/rickshaw/rickshaw.min.js"></script>
+    <script src="../static/lib/chart.js/Chart.js"></script>
+    <script src="../static/lib/Flot/jquery.flot.js"></script>
+    <script src="../static/lib/Flot/jquery.flot.pie.js"></script>
+    <script src="../static/lib/Flot/jquery.flot.resize.js"></script>
+    <script src="../static/lib/flot-spline/jquery.flot.spline.js"></script>
+
+    <script src="../static/js/starlight.js"></script>
+    <script src="../static/js/ResizeSensor.js"></script>
+    <script src="../static/js/dashboard.js"></script>
+    <!-- UIkit JS -->
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.15.6/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.15.6/dist/js/uikit-icons.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
+<script>
+    var ctx = document.getElementById('chartBar1').getContext('2d');
+new Chart(ctx, {
+type: 'horizontalBar',
+data: {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+  datasets: [{
+    label: '# of Votes',
+    data: [12, 0, 20, 10, 25, 18],
+    backgroundColor: '#27AAC8'
+  }]
+},
+options: {
+  legend: {
+    display: false,
+      labels: {
+        display: false
+      }
+  },
+  scales: {
+    yAxes: [{
+      ticks: {
+        beginAtZero:true,
+        fontSize: 10,
+        max: 80
+      }
+    }],
+    xAxes: [{
+      ticks: {
+        beginAtZero:true,
+        fontSize: 11
+      }
+    }]
+  }
+}
+});
+</script>
+</body>
+</html>
