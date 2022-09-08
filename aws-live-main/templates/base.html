@@ -36,20 +36,22 @@
      <!-- ########## END: HEAD PANEL ########## -->
 
      <!-- ########## START: RIGHT PANEL ########## -->
-    {% include "components/sidebar.html" %}
+      {% include "components/sidebar.html" %}
      <!-- ########## END: RIGHT PANEL ########## --->
  
      <!-- ########## START: MAIN PANEL ########## -->
      <div class="sl-mainpanel">
       {%block breadcrumb%}
       <nav class="breadcrumb sl-breadcrumb">
-        <a class="breadcrumb-item" href="index.html">Starlight</a>
+        <a class="breadcrumb-item" href="index.html">EMPLOY</a>
         <span class="breadcrumb-item active">Dashboard</span>
       </nav>
       {%endblock%}
    
       {% block main %}
-      {% include "components/mainPanel.html" %}
+      {% with len=len %} 
+         {% include "components/mainPanel.html" %}
+      {% endwith %}
      
       {% endblock %}
   

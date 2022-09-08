@@ -24,19 +24,19 @@ db_conn = connections.Connection(
 )
 output = {}
 table = 'employee'
-
+cur = db_conn.cursor() 
+cur.execute("""SELECT * FROM employee""")
+user = cur.fetchall()
 
 @app.route("/", methods=['GET', 'POST'])
 @cross_origin()
 def home():
     title = 'Employee System Management'
-    return render_template('base.html', title=title)
+    return render_template('base.html', len = len(user), title=title)
 
 @app.route("/employee", methods=['GET', 'POST'])
 def employee():
-    cur = db_conn.cursor() 
-    cur.execute("""SELECT * FROM employee""")
-    user = cur.fetchall()
+    
     return render_template('Employee.html',len = len(user), user = user)
 
 @app.route("/about", methods=['GET'])
