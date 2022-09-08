@@ -110,7 +110,7 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return redirect('employee')
+    return render_template('Employee.html')
 
 
 if __name__ == '__main__':
