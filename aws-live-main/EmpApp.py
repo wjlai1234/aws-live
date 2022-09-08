@@ -94,7 +94,7 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return redirect('Employee.html')
+    return redirect('employee')
 
 
 if __name__ == '__main__':
