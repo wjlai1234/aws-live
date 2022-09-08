@@ -28,7 +28,7 @@ cur = db_conn.cursor()
 cur.execute("""SELECT * FROM employee""")
 user = cur.fetchall()
 sidebar_items = [
-        ["Dashboard","ion-ios-home-outline","home"],
+        ["Dashboard","ion-ios-home-outline","/"],
         ["Employee","ion-ios-person-outline","employee"],
         ["Leave Tracker","ion-ios-calendar-outline","leave"],
         ["Payroll","ion-cash","payroll"],
@@ -36,11 +36,11 @@ sidebar_items = [
         ["Message","ion-ios-chatboxes-outline","message"]
         ]
 
-@app.route("/home", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 @cross_origin()
 def home():
     title = 'Employee System Management'
-    return render_template('base.html', len = len(user), active="home",  sidebar_items=sidebar_items,  len_sidebar=len(sidebar_items), title=title)
+    return render_template('base.html', len = len(user), active="/",  sidebar_items=sidebar_items,  len_sidebar=len(sidebar_items), title=title)
 
 @app.route("/employee", methods=['GET', 'POST'])
 def employee():
