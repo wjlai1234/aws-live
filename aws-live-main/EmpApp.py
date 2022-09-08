@@ -47,9 +47,17 @@ def employee():
     id = len(user) + 1
     return render_template('Employee.html',len = len(user), active="employee", user = user, id=id, sidebar_items=sidebar_items, len_sidebar=len(sidebar_items))
 
-@app.route("/about", methods=['GET'])
-def about():
-    return render_template('www.intellipaat.com')
+@app.route("/leave", methods=['GET'])
+def leave():
+    return render_template('Leave.html',active="leave", sidebar_items=sidebar_items, len_sidebar=len(sidebar_items))
+
+@app.route("/payroll", methods=['GET'])
+def payroll():
+    return render_template('Payroll.html',active="payroll", sidebar_items=sidebar_items, len_sidebar=len(sidebar_items))
+
+@app.route("/attendances", methods=['GET'])
+def attendances():
+    return render_template('Attendance.html',active="attendances", sidebar_items=sidebar_items, len_sidebar=len(sidebar_items))
 
 
 @app.route("/addemp", methods=['POST'])
