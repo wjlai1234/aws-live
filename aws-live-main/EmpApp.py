@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, redirect, request
 from pymysql import connections
 import os
 import boto3
@@ -94,7 +94,7 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('AddEmpOutput.html', name=emp_name)
+    return redirect('Employee.html', name=emp_name)
 
 
 if __name__ == '__main__':
