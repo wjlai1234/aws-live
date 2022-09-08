@@ -110,6 +110,9 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
+    cur = db_conn.cursor() 
+    cur.execute("""SELECT * FROM employee""")
+    user = cur.fetchall()
     id = len(user) + 1
     return render_template('Employee.html',len = len(user), active="employee", user = user, id=id, sidebar_items=sidebar_items, len_sidebar=len(sidebar_items))
 
