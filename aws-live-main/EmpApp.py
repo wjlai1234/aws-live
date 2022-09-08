@@ -36,8 +36,8 @@ def home():
 
 @app.route("/employee", methods=['GET', 'POST'])
 def employee():
-    
-    return render_template('Employee.html',len = len(user), user = user)
+    id = len(user) + 1
+    return render_template('Employee.html',len = len(user), user = user, id=id)
 
 @app.route("/about", methods=['GET'])
 def about():
