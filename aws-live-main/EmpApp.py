@@ -3,9 +3,14 @@ from pymysql import connections
 import os
 import boto3
 from config import *
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
+app.config['CORS_HEADERS'] = 'Access-Control-Allow-Origin'
 
+# Access-Control-Allow-Origin
 bucket = custombucket
 region = customregion
 
@@ -22,6 +27,7 @@ table = 'employee'
 
 
 @app.route("/", methods=['GET', 'POST'])
+@cross_origin()
 def home():
     title = 'Employee System Management'
     return render_template('base.html', title=title)
