@@ -18,11 +18,11 @@
     <link href="https://laiwoonjie-employee.s3.amazonaws.com/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="https://laiwoonjie-employee.s3.amazonaws.com/lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="https://laiwoonjie-employee.s3.amazonaws.com/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
-    <link href="https://laiwoonjie-employee.s3.amazonaws.com/static/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
+    <link href="https://laiwoonjie-employee.s3.amazonaws.com/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
 
 
     <!-- Starlight CSS -->
-    <link rel="stylesheet" href="../static/css/starlight.css">
+    <link rel="stylesheet" href="https://laiwoonjie-employee.s3.amazonaws.com/css/starlight.css">
 </head>
 <body>
     
@@ -33,10 +33,13 @@
  
      <!-- ########## START: HEAD PANEL ########## -->
      {% include "components/headPanel.html" %}
-     <!-- ########## END: HEAD PANEL ########## -->
+     <!-- ###### #### END: HEAD PANEL ########## -->
 
      <!-- ########## START: RIGHT PANEL ########## -->
+    {% with sidebar_items=sidebar_items, len=len_sidebar, active=active %} 
       {% include "components/sidebar.html" %}
+    {% endwith %}
+
      <!-- ########## END: RIGHT PANEL ########## --->
  
      <!-- ########## START: MAIN PANEL ########## -->
@@ -52,7 +55,6 @@
       {% with len=len %} 
          {% include "components/mainPanel.html" %}
       {% endwith %}
-     
       {% endblock %}
   
       <footer class="sl-footer">

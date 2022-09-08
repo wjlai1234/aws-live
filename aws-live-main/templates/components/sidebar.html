@@ -8,42 +8,14 @@
 
     <label class="sidebar-label">Navigation</label>
     <div class="sl-sideleft-menu">
-      <a href="/" class="sl-menu-link active">
+      {%for i in range(0, len_sidebar)%} 
+      <a href="{{sidebar_items[i][2]}}" class="sl-menu-link {% if active == sidebar_items[i][2] %}active{%endif %}">
         <div class="sl-menu-item">
-          <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
-          <span class="menu-item-label">Dashboard</span>
+          <i class="menu-item-icon icon {{sidebar_items[i][1]}} tx-22"></i>
+          <span class="menu-item-label">{{sidebar_items[i][0]}}</span>
         </div><!-- menu-item -->
       </a><!-- sl-menu-link -->
-      <a href="/employee" class="sl-menu-link">
-        <div class="sl-menu-item">
-          <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-          <span class="menu-item-label">Employee</span>
-        </div><!-- menu-item -->
-      </a><!-- sl-menu-link -->
-      <a href="/" class="sl-menu-link">
-        <div class="sl-menu-item">
-          <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
-          <span class="menu-item-label">Leave Tracker</span>
-        </div><!-- menu-item -->
-      </a><!-- sl-menu-link -->
-      <a href="#" class="sl-menu-link">
-        <div class="sl-menu-item">
-          <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
-          <span class="menu-item-label">Payroll</span>
-        </div><!-- menu-item -->
-      </a><!-- sl-menu-link -->
-      <a href="#" class="sl-menu-link">
-        <div class="sl-menu-item">
-          <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
-          <span class="menu-item-label">Attendance</span>
-        </div><!-- menu-item -->
-      </a><!-- sl-menu-link -->
-      <a href="mailbox.html" class="sl-menu-link">
-        <div class="sl-menu-item">
-          <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
-          <span class="menu-item-label">Message</span>
-        </div><!-- menu-item -->
-      </a><!-- sl-menu-link -->
+      {%endfor%}
     </div><!-- sl-sideleft-menu -->
 
     <br>
