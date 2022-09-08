@@ -110,7 +110,8 @@ def AddEmp():
         cursor.close()
 
     print("all modification done...")
-    return render_template('Employee.html')
+    id = len(user) + 1
+    return render_template('Employee.html',len = len(user), active="employee", user = user, id=id, sidebar_items=sidebar_items, len_sidebar=len(sidebar_items))
 
 
 if __name__ == '__main__':
