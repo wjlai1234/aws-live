@@ -64,12 +64,14 @@ def home():
             count+=1
     attendance_rate = count/len(attendance) * 100
 
-    total=0
+    total=0.0
     cur = db_conn.cursor() 
-    cur.execute("""SELECT a.total_payment FROM employee e LEFT JOIN payroll a ON (e.id = a.emp_id)""")
+    cur.execute("""SELECT  CASE WHEN a.total_payment IS NULL THEN 0 ELSE a.total_payment END FROM employee e LEFT JOIN payroll a ON (e.id = a.emp_id)""")
+    
     payroll = cur.fetchall()
     payroll_data = []
     for data in payroll:
+        print(data[0])
         total += data[0] 
         payroll_data.append(data[0])
 
@@ -83,7 +85,8 @@ def home():
     
     leave_rate = leave_count/len(leave) * 100
     title = 'Employee System Management'
-    return render_template('base.html',user=user, len_user=len(user) ,leave_rate=leave_rate, payroll_data=payroll_data,total=total, employee_data=employee_data,attendance_rate=str(round(attendance_rate, 2)), len = len(user), active="/",  sidebar_items=sidebar_items,  len_sidebar=len(sidebar_items), title=title)
+    return render_template('base.html',user=user, len_user=len(user) ,leave_rate=str(round(leave_rate, 2)), payroll_data=payroll_data,total=total, employee_data=employee_data,attendance_rate=str(round(attendance_rate, 2)), len = len(user), active="/",  sidebar_items=sidebar_items,  len_sidebar=len(sidebar_items), title=title)
+
 
 @app.route("/employee", methods=['GET', 'POST'])
 def employee():
