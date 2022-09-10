@@ -1,76 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{title}}</title>
     <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.6/dist/css/uikit.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.15.6/dist/css/uikit.min.css"
+    />
     <!-- vendor css -->
     <!-- https://laiwoonjie-employee.s3.amazonaws.com/ -->
     <!-- <link href="../static/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="../static/lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="../static/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="../static/lib/rickshaw/rickshaw.min.css" rel="stylesheet"> -->
-     
-    <!-- aws -->
-    <link href="https://laiwoonjie-employee.s3.amazonaws.com/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="https://laiwoonjie-employee.s3.amazonaws.com/lib/Ionicons/css/ionicons.css" rel="stylesheet">
-    <link href="https://laiwoonjie-employee.s3.amazonaws.com/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
-    <link href="https://laiwoonjie-employee.s3.amazonaws.com/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
 
+    <!-- aws -->
+    <link
+      href="https://laiwoonjie-employee.s3.amazonaws.com/lib/font-awesome/css/font-awesome.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://laiwoonjie-employee.s3.amazonaws.com/lib/Ionicons/css/ionicons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://laiwoonjie-employee.s3.amazonaws.com/lib/perfect-scrollbar/css/perfect-scrollbar.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://laiwoonjie-employee.s3.amazonaws.com/lib/rickshaw/rickshaw.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://laiwoonjie-employee.s3.amazonaws.com/lib/highlightjs/github.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://laiwoonjie-employee.s3.amazonaws.com/lib/datatables/jquery.dataTables.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://laiwoonjie-employee.s3.amazonaws.com/lib/select2/css/select2.min.css"
+      rel="stylesheet"
+    />
 
     <!-- Starlight CSS -->
-    <link rel="stylesheet" href="https://laiwoonjie-employee.s3.amazonaws.com/css/starlight.css">
-</head>
-<body>
-    
-     <!-- ########## START: LEFT PANEL ########## -->
-     <div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i>EMPLOY  </a></div>
+    <link
+      rel="stylesheet"
+      href="https://laiwoonjie-employee.s3.amazonaws.com/css/starlight.css"
+    />
+  </head>
+  <body>
+    <!-- ########## START: LEFT PANEL ########## -->
+    <div class="sl-logo">
+      <a href=""><i class="icon ion-android-star-outline"></i>EMPLOY </a>
+    </div>
 
-     <!-- ########## END: LEFT PANEL ########## -->
- 
-     <!-- ########## START: HEAD PANEL ########## -->
-     {% include "components/headPanel.html" %}
-     <!-- ###### #### END: HEAD PANEL ########## -->
+    <!-- ########## END: LEFT PANEL ########## -->
 
-     <!-- ########## START: RIGHT PANEL ########## -->
-    {% with sidebar_items=sidebar_items, len=len_sidebar, active=active %} 
-      {% include "components/sidebar.html" %}
-    {% endwith %}
+    <!-- ########## START: HEAD PANEL ########## -->
+    {% include "components/headPanel.html" %}
+    <!-- ###### #### END: HEAD PANEL ########## -->
 
-     <!-- ########## END: RIGHT PANEL ########## --->
- 
-     <!-- ########## START: MAIN PANEL ########## -->
-     <div class="sl-mainpanel">
+    <!-- ########## START: RIGHT PANEL ########## -->
+    {% with sidebar_items=sidebar_items, len=len_sidebar, active=active %} {%
+    include "components/sidebar.html" %} {% endwith %}
+
+    <!-- ########## END: RIGHT PANEL ########## --->
+
+    <!-- ########## START: MAIN PANEL ########## -->
+    <div class="sl-mainpanel">
       {%block breadcrumb%}
       <nav class="breadcrumb sl-breadcrumb">
         <a class="breadcrumb-item" href="index.html">EMPLOY</a>
         <span class="breadcrumb-item active">Dashboard</span>
       </nav>
-      {%endblock%}
-   
-      {% block main %}
-      {% with len=len %} 
-         {% include "components/mainPanel.html" %}
-      {% endwith %}
-      {% endblock %}
-  
+      {%endblock%} {% block main %} {% with user=user, len_user=len_user, employee_data=employee_data, len=len,leave_rate=leave_rate, total=total, attendance_rate=attendance_rate %} {% include
+      "components/mainPanel.html" %} {% endwith %} {% endblock %}
+        <input type="hidden" id="input_data" value="{{employee_data| tojson}}" />
       <footer class="sl-footer">
         <div class="footer-left">
-          <div class="mg-b-2">Copyright &copy; 2017. Starlight. All Rights Reserved.</div>
+          <div class="mg-b-2">
+            Copyright &copy; 2017. Starlight. All Rights Reserved.
+          </div>
           <div>Made by ThemePixels.</div>
         </div>
         <div class="footer-right d-flex align-items-center">
           <span class="tx-uppercase mg-r-10">Share:</span>
-          <a target="_blank" class="pd-x-5" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//themepixels.me/starlight"><i class="fa fa-facebook tx-20"></i></a>
-          <a target="_blank" class="pd-x-5" href="https://twitter.com/home?status=Starlight,%20your%20best%20choice%20for%20premium%20quality%20admin%20template%20from%20Bootstrap.%20Get%20it%20now%20at%20http%3A//themepixels.me/starlight"><i class="fa fa-twitter tx-20"></i></a>
+          <a
+            target="_blank"
+            class="pd-x-5"
+            href="https://www.facebook.com/sharer/sharer.php?u=http%3A//themepixels.me/starlight"
+            ><i class="fa fa-facebook tx-20"></i
+          ></a>
+          <a
+            target="_blank"
+            class="pd-x-5"
+            href="https://twitter.com/home?status=Starlight,%20your%20best%20choice%20for%20premium%20quality%20admin%20template%20from%20Bootstrap.%20Get%20it%20now%20at%20http%3A//themepixels.me/starlight"
+            ><i class="fa fa-twitter tx-20"></i
+          ></a>
         </div>
       </footer>
-    </div><!-- sl-mainpanel -->
-  
-     <!-- ########## END: MAIN PANEL ########## -->
+    </div>
+    <!-- sl-mainpanel -->
+
+    <!-- ########## END: MAIN PANEL ########## -->
     <!-- https://laiwoonjie-employee.s3.amazonaws.com/ -->
     <!-- <script src="../static/lib/jquery/jquery.js"></script>
     <script src="../static/lib/popper.js/popper.js"></script>
@@ -91,9 +128,10 @@
     <script src="../static/js/dashboard.js"></script> -->
 
     <script src="https://laiwoonjie-employee.s3.amazonaws.com/lib/jquery/jquery.js"></script>
+    <script src="https://laiwoonjie-employee.s3.amazonaws.com/lib/datatables/jquery.dataTables.js"></script>
+    <script src="https://laiwoonjie-employee.s3.amazonaws.com/lib/jquery-ui/jquery-ui.js"></script>
     <script src="https://laiwoonjie-employee.s3.amazonaws.com/lib/popper.js/popper.js"></script>
     <script src="https://laiwoonjie-employee.s3.amazonaws.com/lib/bootstrap/bootstrap.js"></script>
-    <script src="https://laiwoonjie-employee.s3.amazonaws.com/lib/jquery-ui/jquery-ui.js"></script>
     <script src="https://laiwoonjie-employee.s3.amazonaws.com/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
     <script src="https://laiwoonjie-employee.s3.amazonaws.com/lib/jquery.sparkline.bower/jquery.sparkline.min.js"></script>
     <script src="https://laiwoonjie-employee.s3.amazonaws.com/lib/d3/d3.js"></script>
@@ -107,47 +145,92 @@
     <script src="https://laiwoonjie-employee.s3.amazonaws.com/js/starlight.js"></script>
     <script src="https://laiwoonjie-employee.s3.amazonaws.com/js/ResizeSensor.js"></script>
     <script src="https://laiwoonjie-employee.s3.amazonaws.com/js/dashboard.js"></script>
+    <script src="https://laiwoonjie-employee.s3.amazonaws.com/lib/highlightjs/highlight.pack.js"></script>
+    <script src="https://laiwoonjie-employee.s3.amazonaws.com/lib/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="https://laiwoonjie-employee.s3.amazonaws.com/lib/select2/js/select2.min.js"></script>
     <!-- UIkit JS -->
-<script src="https://cdn.jsdelivr.net/npm/uikit@3.15.6/dist/js/uikit.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/uikit@3.15.6/dist/js/uikit-icons.min.js"></script>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.6/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.6/dist/js/uikit-icons.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
-<script>
-    var ctx = document.getElementById('chartBar1').getContext('2d');
-new Chart(ctx, {
-type: 'horizontalBar',
-data: {
-  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-  datasets: [{
-    label: '# of Votes',
-    data: [12, 0, 20, 10, 25, 18],
-    backgroundColor: '#27AAC8'
-  }]
-},
-options: {
-  legend: {
-    display: false,
-      labels: {
-        display: false
+
+    <script>
+      var ctx = document.getElementById("chartBar1").getContext("2d");
+      let data_c;
+      let data_d;
+      let output = [];
+      let output_A = [];
+      data_a = '{{employee_data}}';
+      data_b = '{{payroll_data}}';
+      splitdata = data_a.split(',');   
+      splitdata_a = data_b.split(',');   
+      for (var i = 0; i < splitdata.length; i++){
+        data_c= splitdata[i].replace(/[^\w\s.&-]+&#39;/g, ' ');
+        var str = data_c.replace(/&#39;/g, " ");
+        data_d= splitdata_a[i].replace(/[^\w\s.&-]+/g, '');
+        output.push(str);
+        output_A.push(data_d);
       }
-  },
-  scales: {
-    yAxes: [{
-      ticks: {
-        beginAtZero:true,
-        fontSize: 10,
-        max: 80
-      }
-    }],
-    xAxes: [{
-      ticks: {
-        beginAtZero:true,
-        fontSize: 11
-      }
-    }]
-  }
-}
-});
-</script>
-</body>
+      new Chart(ctx, {
+        type: "horizontalBar",
+        data: {
+          labels:output,
+          datasets: [
+            {
+              label: "# of Votes",
+              data:output_A,
+              backgroundColor: "#27AAC8",
+            },
+          ],
+        },
+        options: {
+          legend: {
+            display: false,
+            labels: {
+              display: false,
+            },
+          },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                  fontSize: 10,
+                  max: 80,
+                },
+              },
+            ],
+            xAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                  fontSize: 11,
+                },
+              },
+            ],
+          },
+        },
+      });
+    </script>
+    <script type="text/javascript">
+      $(function () {
+        $("#datatable1").DataTable({
+          responsive: true,
+          language: {
+            searchPlaceholder: "Search...",
+            sSearch: "",
+            lengthMenu: "_MENU_ items/page",
+          },
+        });
+        $("#test").click(function() {
+        $(this).hide();
+        alert("test clicked");
+        });
+        // Select2
+        $(".dataTables_length select").select2({
+          minimumResultsForSearch: Infinity,
+        });
+      });
+    </script>
+  </body>
 </html>

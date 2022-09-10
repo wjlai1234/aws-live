@@ -3,8 +3,71 @@
   <a class="breadcrumb-item" href="index.html">Starlight</a>
   <span class="breadcrumb-item active">Attendances</span>
 </nav>
-{%endblock%} 
-{% block main %}
+{%endblock%} {% block main %}
+<div class="sl-pagebody">
+  <!-- <div class="sl-page-title">
+        <h5>Data Table</h5>
+        <p>DataTables is a plug-in for the jQuery Javascript library.</p>
+      </div>sl-page-title -->
 
+  <div class="card pd-20 pd-sm-40">
+    <div class="flex">
+      <h6 class="card-body-title">Attendances Console</h6>
+      <p class="mg-b-20 mg-sm-b-30">
+        Searching, ordering and paging goodness will be immediately added to the
+        table, as shown in this example.
+      </p>
+      <div class="table-wrapper">
+        <table id="datatable1" class="table display responsive nowrap">
+          <thead>
+            <tr>
+              <th class="wd-5p">Employee Id</th>
+              <th class="wd-10p">Employee Name</th>
+              <th class="wd-10p">Check In</th>
+              <th class="wd-10p">Check Out</th>
+              <th class="wd-10p">Total Hours</th>
+              <th class="wd-10p">Overtime</th>
+              <th class="wd-10p">Status</th>
+              <th class="wd-10p">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%for i in range(0, len)%}
+            <tr>
+              <td>{{attendance[i][0]}}</td>
+              <td>{{attendance[i][2]}} {{attendance[i][1]}}</td>
+              <td>
+                {{attendance[i][4]}}
+              </td>
+              <td>
+                {{attendance[i][5]}}
+              </td>
+              <td>
+                      {{attendance[i][6]}}
+              </td>
+              <td>
+                {{attendance[i][7]}}
+              </td>
+              <td>  {% if attendance[i][8] !=None %} {{attendance[i][8]}} {% else %} Absent {% endif %}</td>
+              <td>
+                <button
+                  data-toggle="modal"
+                  data-target="#modaldemo1{{ user[i][0] }}"
+                  uk-icon="pencil"
+                ></button>
+                {% with id=user[i][0] %} {% include "components/model.html" %}
+                {% endwith %}
+              </td>
+            </tr>
+            {%endfor%}
+          </tbody>
+        </table>
+      </div>
+      <!-- table-wrapper -->
+    </div>
+    <!-- card -->
+  </div>
+  <!-- sl-pagebody -->
+</div>
 
-{% endblock %}
+  {% endblock %}

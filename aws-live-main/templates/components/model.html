@@ -1,0 +1,43 @@
+<form action="/addattendance" autocomplete="on" method = "POST" enctype="multipart/form-data">
+              
+    <!-- BASIC MODAL -->
+ <div id="modaldemo1{{ user[i][0] }}" class="modal fade">
+   <div class="modal-dialog modal-dialog-vertical-center" role="document">
+     <div class="modal-content bd-0 tx-14">
+       <div class="modal-header pd-y-20 pd-x-25">
+         <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Adding Data</h6>
+
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       
+       <div class="modal-body pd-60">
+        <div class="row ">
+          <label class="col-sm-4 form-control-label">Emp Id: <span class="tx-danger">*</span></label>
+          <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+           <input type="number" class="form-control" name="emp_id"  value="{{id}}" placeholder="Enter lastname" readonly>
+          </div>
+        </div><!-- row -->
+             <div class="row  mg-t-20">
+               <label class="col-sm-4 form-control-label">Check In: <span class="tx-danger">*</span></label>
+               <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                <input type="time" step="1", value="00:00:00" class="form-control" name="check_in" placeholder="Enter lastname">
+               </div>
+             </div><!-- row -->
+             <div class="row mg-t-20">
+               <label class="col-sm-4 form-control-label">Check Out: <span class="tx-danger">*</span></label>
+               <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                 <input type="time" step="1", value="00:00:00" class="form-control" name="check_out" placeholder="Enter lastname">
+               </div>
+             </div>
+       </div>
+       <div class="modal-footer">
+         <button type="submit" class="btn btn-info pd-x-20">Save changes</button>
+         <button type="button" class="btn btn-secondary pd-x-20" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+   </div><!-- modal-dialog -->
+ </div><!-- modal -->
+
+</form>

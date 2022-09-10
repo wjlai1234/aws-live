@@ -18,7 +18,7 @@
             <span class="sparkline2">3,4,8,7,4,3,1,2,1</span>
             <div class="mg-l-15">
               <p class="tx-uppercase tx-11 tx-spacing-1 tx-medium tx-white-5 mg-b-8">Attandance Rate</p>
-              <h3 class="tx-bold tx-lato tx-white mg-b-0">100%</h3>
+              <h3 class="tx-bold tx-lato tx-white mg-b-0">{{attendance_rate}}%</h3>
             </div>
           </div>
         </div><!-- card -->
@@ -29,7 +29,7 @@
             <span class="sparkline2">3,4,8,7,4,3,1,2,1</span>
             <div class="mg-l-15">
               <p class="tx-uppercase tx-11 tx-spacing-1 tx-medium tx-white-5 mg-b-8">Total Payroll</p>
-              <h3 class="tx-bold tx-lato tx-white mg-b-0">RM45,302</h3>
+              <h3 class="tx-bold tx-lato tx-white mg-b-0">RM{{total}}</h3>
             </div>
           </div>
         </div><!-- card -->
@@ -40,7 +40,7 @@
             <span class="sparkline2">3,4,8,7,4,3,1,2,1</span>
             <div class="mg-l-15">
               <p class="tx-uppercase tx-11 tx-spacing-1 tx-medium tx-white-5 mg-b-8">Leave Rate</p>
-              <h3 class="tx-bold tx-lato tx-white mg-b-0">100%</h3>
+              <h3 class="tx-bold tx-lato tx-white mg-b-0">{{leave_rate}}%</h3>
             </div>
           </div>
         </div><!-- card -->
@@ -53,8 +53,9 @@
       {% include "components/payrollChart.html" %}
      </div><!-- col-8 -->
      <div class="col-xl-4 mg-t-20 mg-xl-t-0">
-      {% include "components/messageCard.html" %}
-
+      {% with len=len, employee_data=employee_data, len_user=len_user, user=user, leave_rate=leave_rate, total=total, attendance_rate=attendance_rate %}
+        {% include "components/messageCard.html" %}
+      {% endwith %}
   
 
        
