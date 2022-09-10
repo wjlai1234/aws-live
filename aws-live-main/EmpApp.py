@@ -64,15 +64,13 @@ def home():
             count+=1
     attendance_rate = count/len(attendance) * 100
 
-    total=0.0
+    total=0
     cur = db_conn.cursor() 
     cur.execute("""SELECT a.total_payment FROM employee e LEFT JOIN payroll a ON (e.id = a.emp_id)""")
     payroll = cur.fetchall()
     payroll_data = []
     for data in payroll:
-        if(data[0] is None):
-            data[0] = 0
-        total = total + data[0] 
+        total += data[0] 
         payroll_data.append(data[0])
 
     cur = db_conn.cursor() 
