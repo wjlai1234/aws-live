@@ -70,7 +70,7 @@ def home():
     payroll = cur.fetchall()
     payroll_data = []
     for data in payroll:
-        total += data[0] 
+        total = total + data[0] 
         payroll_data.append(data[0])
 
     cur = db_conn.cursor() 
