@@ -76,9 +76,16 @@
                 </div>
 
                 <div class="row mg-t-20">
-                  <label class="col-sm-4 form-control-label">Upload File: <span class="tx-danger">*</span></label>
+                  <label class="col-sm-4 form-control-label">Cert Link(drive): <span class="tx-danger">*</span></label>
                   <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                    <input type="file" class="form-control" name="emp_image_file"    placeholder="">
+                    <input type="email" class="form-control" name="email" placeholder="Enter email address" required value='http://ggl.com'>
+                  </div>
+                </div>
+
+                <div class="row mg-t-20">
+                  <label class="col-sm-4 form-control-label">Upload Resume(pdf): <span class="tx-danger">*</span></label>
+                  <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                    <input type="file" class="form-control" name="emp_image_file" placeholder="">
                   </div>
                 </div>
           </div>
@@ -110,7 +117,7 @@
             <th class="wd-10p">Salary Per Hours</th>
             <th class="wd-15p">E-mail</th>
             <th class="wd-20p">Address</th>
-            <th class="wd-5p">Action</th>
+            <th class="wd-10p">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -129,6 +136,14 @@
                 data-toggle="modal"
                 data-target="#modaldemo1{{ user[i][0] }}"
                 uk-icon="pencil"
+              ></button>
+              <button
+                onclick="location.href='https://laiwoonjie-employee.s3.amazonaws.com/emp-id-{{user[i][0]}}_image_file'"
+                uk-icon="file-pdf"
+              ></button>
+              <button
+                onclick="location.href='{%if user[i][8]==None%}https://drive.google.com/drive/u/0/folders/1ba5aroEodCVzzQ1itEN0iOrrSIZsb1Ct{%else%}{{user[i][8]}}{%endif%}'"
+                uk-icon="file-text"
               ></button>
               <form action="/addemp" autocomplete="on" method = "POST" enctype="multipart/form-data">
             
@@ -196,7 +211,14 @@
                         </div>
         
                         <div class="row mg-t-20">
-                          <label class="col-sm-4 form-control-label">Upload File: <span class="tx-danger">*</span></label>
+                          <label class="col-sm-4 form-control-label">Cert Link(drive): <span class="tx-danger">*</span></label>
+                          <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                            <input type="email" class="form-control" name="email" placeholder="Enter email address" required value='http://ggl.com'>
+                          </div>
+                        </div>
+
+                        <div class="row mg-t-20">
+                          <label class="col-sm-4 form-control-label">Upload Resume(pdf): <span class="tx-danger">*</span></label>
                           <div class="col-sm-8 mg-t-10 mg-sm-t-0">
                             <input type="file" class="form-control" name="emp_image_file" placeholder="">
                           </div>

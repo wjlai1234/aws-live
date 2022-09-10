@@ -138,9 +138,10 @@ def AddEmp():
     salary = request.form['salary']
     email = request.form['email']
     location = request.form['location']
+    drive = request.form['drive']
     emp_image_file = request.files['emp_image_file']
 
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE first_name=%s, last_name=%s, position=%s, start_date=%s, salary=%s, email=%s, location=%s"
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s, %s,%s) ON DUPLICATE KEY UPDATE first_name=%s, last_name=%s, position=%s, start_date=%s, salary=%s, email=%s, location=%s, drive=%s"
     cursor = db_conn.cursor()
 
     # if emp_image_file.filename == "":
@@ -148,7 +149,7 @@ def AddEmp():
 
     try:
         cursor.execute(insert_sql, (emp_id, first_name, last_name, position, start_date, salary,
-                       email, location, first_name, last_name, position, start_date, salary, email, location))
+                       email, location, drive, first_name, last_name, position, start_date, salary, email, location, drive))
         db_conn.commit()
         emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
