@@ -124,7 +124,7 @@ def attendances():
     cur.execute(
         """SELECT e.id, e.first_name, e.last_name ,a.* FROM employee e LEFT JOIN attendance a ON (e.id = a.employee_id)""")
     attendance = cur.fetchall()
-
+    print(attendance)
     return render_template('Attendance.html', employee_data=employee_data, attendance=attendance, len_attendance=len(attendance), active="attendances", len=len(user), user=user, sidebar_items=sidebar_items, len_sidebar=len(sidebar_items))
 
 
