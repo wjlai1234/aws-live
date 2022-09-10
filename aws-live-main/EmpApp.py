@@ -213,17 +213,18 @@ def AddAttendance():
 
     cur = db_conn.cursor()
     cur.execute(
-        "SELECT e.salary, p.total_hours FROM employee e LEFT JOIN payroll p ON (e.id = p.emp_id)  WHERE e.id = %s", (emp_id))
+        "SELECT e.salary, p.total_hours FROM employee e LEFT JOIN attendance p ON (e.id = p.employee_id)  WHERE e.id = %s", (emp_id))
     total_work = cur.fetchall()
     print(total_work[0][0])
     payment = total_work[0][0] * total_work[0][1]
+    total_payment = float(f'{payment:.2f}')
+
     insert_sqla = "INSERT INTO payroll VALUES (%s, %s, %s) ON DUPLICATE KEY UPDATE total_hours=%s, total_payment=%s"
     insert_sqlb = "INSERT INTO attendance VALUES (%s, %s, %s, %s, %s, %s) ON DUPLICATE KEY UPDATE status=%s, check_in=%s, check_out=%s, total_hours=%s, over_time=%s"
-    total_payment = float(f'{payment:.2f}')
     cursor = db_conn.cursor()
     try:
         cursor.execute(
-            insert_sqla, (emp_id, total_work[0][0], total_payment, total_work[0][0], total_payment))
+            insert_sqla, (emp_id, total_hours, total_payment, total_hours, total_payment))
         cursor.execute(insert_sqlb, (emp_id, check_in, check_out, total_hours,
                        overtime, status, status, check_in, check_out, total_hours, overtime))
         db_conn.commit()
