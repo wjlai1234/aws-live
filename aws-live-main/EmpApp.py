@@ -35,7 +35,7 @@ sidebar_items = [
     ["Leave Tracker", "ion-ios-calendar-outline", "leave"],
     ["Payroll", "ion-cash", "payroll"],
     ["Attendances", "ion-checkmark", "attendances"],
-    ["About Us","ion-ios-chatboxes-outline","about-us"]
+    ["About Us","ion-ios-chatboxes-outline","about"]
 ]
 count = 0
 cur.execute("""SELECT e.id, e.first_name, e.last_name ,a.* FROM employee e LEFT JOIN attendance a ON (e.id = a.employee_id)""")
