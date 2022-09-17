@@ -155,7 +155,7 @@ def AddEmp():
         emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
         emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
-        emp_profile_piture_file_name_in_s3 = "emp-id-" + str(emp_id) + "_profile_image_file"
+        emp_profile_piture_file_name_in_s3 = "emp-id-" + str(emp_id) + "_profile_image_file.png"
         s3 = boto3.resource('s3')
 
         try:
