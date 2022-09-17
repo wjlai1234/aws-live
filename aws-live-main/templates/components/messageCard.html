@@ -6,13 +6,13 @@
     <div class="list-group list-group-flush">
       {% for i in range(0,5)%}
       <a href="" class="list-group-item list-group-item-action media">
-        <img src="https://laiwoonjie-employee.s3.amazonaws.com/emp-id-{{user[i][0]}}_profile_image_file.png" alt="">
+        <img src="https://laiwoonjie-employee.s3.amazonaws.com/emp-id-{{attendance[i][0]}}_profile_image_file.png" alt="">
         <div class="media-body">
           <div class="msg-top">
-            <span>{{user[i][2]}} {{user[i][1]}}</span>
+            <span>{{attendance[i][2]}} {{attendance[i][1]}}</span>
             <span>4:09am</span>
           </div>
-          <p class="msg-summary">Good Employee</p>
+          <p class="msg-summary">{% if attendance[i][8]=="valid" %}good Employee{% else %}not quite good!{% endif %}</p>
         </div><!-- media-body -->
       </a><!-- list-group-item -->
       {% endfor %}
