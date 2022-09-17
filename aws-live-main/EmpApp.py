@@ -35,7 +35,7 @@ sidebar_items = [
     ["Leave Tracker", "ion-ios-calendar-outline", "leave"],
     ["Payroll", "ion-cash", "payroll"],
     ["Attendances", "ion-checkmark", "attendances"],
-    # ["Message","ion-ios-chatboxes-outline","message"]
+    ["About Us","ion-ios-chatboxes-outline","about-us"]
 ]
 count = 0
 cur.execute("""SELECT e.id, e.first_name, e.last_name ,a.* FROM employee e LEFT JOIN attendance a ON (e.id = a.employee_id)""")
@@ -255,6 +255,9 @@ def AddLeave():
         cursor.close()
     return redirect('leave')
 
+@app.route('/about', methods=['GET'])
+def about():
+    return render_template('about.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
