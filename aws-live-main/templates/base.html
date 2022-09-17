@@ -78,7 +78,7 @@
         <a class="breadcrumb-item" href="index.html">EMPLOY</a>
         <span class="breadcrumb-item active">Dashboard</span>
       </nav>
-      {%endblock%} {% block main %} {% with user=user, len_user=len_user, employee_data=employee_data, len=len,leave_rate=leave_rate, total=total, attendance_rate=attendance_rate %} {% include
+      {%endblock%} {% block main %} {% with attendance=attendance, user=user, len_user=len_user, employee_data=employee_data, len=len,leave_rate=leave_rate, total=total, attendance_rate=attendance_rate %} {% include
       "components/mainPanel.html" %} {% endwith %} {% endblock %}
         <input type="hidden" id="input_data" value="{{employee_data| tojson}}" />
       <footer class="sl-footer">

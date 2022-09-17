@@ -88,7 +88,7 @@ def home():
 
     leave_rate = leave_count/len(leave) * 100
     title = 'Employee System Management'
-    return render_template('base.html', user=user, len_user=len(user), leave_rate=str(round(leave_rate, 2)), payroll_data=payroll_data, total=total, employee_data=employee_data, attendance_rate=str(round(attendance_rate, 2)), len=len(user), active="/",  sidebar_items=sidebar_items,  len_sidebar=len(sidebar_items), title=title)
+    return render_template('base.html', user=user, len_user=len(user), leave_rate=str(round(leave_rate, 2)), payroll_data=payroll_data, total=total, employee_data=employee_data, attendance_rate=str(round(attendance_rate, 2)), len=len(user), active="/",  sidebar_items=sidebar_items,  len_sidebar=len(sidebar_items), title=title, attendance=attendance)
 
 
 @app.route("/employee", methods=['GET', 'POST'])

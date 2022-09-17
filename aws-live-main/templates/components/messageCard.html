@@ -1,12 +1,12 @@
 <div class="card widget-messages mg-t-20">
     <div class="card-header">
-      <span>Reviews</span>
+      <span>Peformance</span>
       <a href=""><i class="icon ion-more"></i></a>
     </div><!-- card-header -->
     <div class="list-group list-group-flush">
       {% for i in range(0,5)%}
       <a href="" class="list-group-item list-group-item-action media">
-        <img src="../static/img/img9.jpg" alt="">
+        <img src="https://laiwoonjie-employee.s3.amazonaws.com/emp-id-{{user[i][0]}}_profile_image_file.jpg" alt="">
         <div class="media-body">
           <div class="msg-top">
             <span>{{user[i][2]}} {{user[i][1]}}</span>
