@@ -257,7 +257,7 @@ def AddLeave():
 
 @app.route('/about', methods=['GET'])
 def about():
-    return render_template('about.html')
+    return render_template('About.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
