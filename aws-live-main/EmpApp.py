@@ -53,6 +53,14 @@ attendance_rate = count/len(attendance) * 100
 @app.route("/", methods=['GET', 'POST'])
 @cross_origin()
 def home():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     count = 0
     cur = db_conn.cursor()
     cur.execute(
@@ -93,6 +101,14 @@ def home():
 
 @app.route("/employee", methods=['GET', 'POST'])
 def employee():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+    )
     cur = db_conn.cursor()
     cur.execute("""SELECT * FROM employee""")
     user = cur.fetchall()
@@ -102,6 +118,14 @@ def employee():
 
 @app.route("/leave", methods=['GET'])
 def leave():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     cur = db_conn.cursor()
     cur.execute(
         """SELECT e.id, e.first_name, e.last_name ,p.* FROM employee e LEFT JOIN leave_app p ON (e.id = p.emp_id)""")
@@ -111,6 +135,14 @@ def leave():
 
 @app.route("/payroll", methods=['GET'])
 def payroll():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     cur = db_conn.cursor()
     cur.execute(
         """SELECT e.id, e.first_name, e.last_name ,a.* FROM employee e LEFT JOIN payroll a ON (e.id = a.emp_id)""")
@@ -120,6 +152,14 @@ def payroll():
 
 @app.route("/attendances", methods=['GET'])
 def attendances():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     cur = db_conn.cursor()
     cur.execute(
         """SELECT e.id, e.first_name, e.last_name ,a.* FROM employee e LEFT JOIN attendance a ON (e.id = a.employee_id)""")
@@ -130,6 +170,14 @@ def attendances():
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     emp_id = request.form['emp_id']
     first_name = request.form['first_name']
     last_name = request.form['last_name']
@@ -149,7 +197,7 @@ def AddEmp():
     #     return "Please select a file"
 
     try:
-        cursor.execute(insert_sql, (emp_id, first_name, last_name, position, start_date, salary,
+        cursor.execute( insert_sql, (emp_id, first_name, last_name, position, start_date, salary,
                        email, location, drive, first_name, last_name, position, start_date, salary, email, location, drive))
         db_conn.commit()
         emp_name = "" + first_name + " " + last_name
@@ -191,6 +239,14 @@ def AddEmp():
 
 @app.route("/addattendance", methods=['POST'])
 def AddAttendance():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     emp_id = request.form['emp_id']
     print(emp_id)
     check_in = request.form['check_in']
@@ -240,6 +296,14 @@ def AddAttendance():
 
 @app.route("/addleave", methods=['POST'])
 def AddLeave():
+    db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
+
+)
     emp_id = request.form['emp_id']
     date = request.form['date']
     reason = request.form['reason']
