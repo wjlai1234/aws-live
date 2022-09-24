@@ -161,6 +161,9 @@ def attendances():
 
 )
     cur = db_conn.cursor()
+    cur.execute("""SELECT * FROM employee""")
+    user = cur.fetchall()
+    cur = db_conn.cursor()
     cur.execute(
         """SELECT e.id, e.first_name, e.last_name ,a.* FROM employee e LEFT JOIN attendance a ON (e.id = a.employee_id)""")
     attendance = cur.fetchall()
